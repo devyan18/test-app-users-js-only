@@ -30,7 +30,7 @@ export const getWorkspaces = async (userId) => {
         { owner: userId },
         { members: { $in: [userId] } }
       ]
-    }).populate('owner').populate('members').populate('tasks.assignee')
+    }).populate('owner').populate('members').populate('tasks').populate('tasks.assignee')
 
     const myWorkspaces = workspaces.map((workspace) => workspace.toJSON())
 
@@ -58,7 +58,7 @@ export const getWorkspaceById = async (userId, workspaceId) => {
 
     const workspaceFound = workspace.toJSON()
 
-    workspaceFound.isOwner = workspaceFound.owner._id.toString() === userId
+    workspaceFound.isOwner = workspaceFound.owner.id.toString() === userId
     delete workspaceFound.owner
 
     return workspaceFound

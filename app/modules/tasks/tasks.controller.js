@@ -8,11 +8,11 @@ const TasksRouter = Router()
 // Create new task from workspace
 TasksRouter.post('/:workspaceId/tasks', authMiddleware, createTaskValidations, async (req, res) => {
   const { workspaceId } = req.params
-  const { task } = req.body
+  const { titleOfTask, descriptionOfTask } = req.body
   const userId = req.user.id
 
   try {
-    const workspace = await createTask(userId, workspaceId, task)
+    const workspace = await createTask(userId, workspaceId, { titleOfTask, descriptionOfTask })
 
     res.json(workspace)
   } catch (error) {
