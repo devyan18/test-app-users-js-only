@@ -12,8 +12,10 @@ export const errorHandlerMiddleware = (err, req, res, next) => {
     }
   } else if (err) {
     // Manejar otros tipos de errores
+    console.log(err)
     return res.status(500).json({ message: 'An unexpected error occurred' })
   }
 
+  console.log(err)
   next()
 }

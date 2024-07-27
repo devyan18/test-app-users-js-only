@@ -5,8 +5,7 @@ import crypto from 'crypto'
 const __dirname = path.resolve(path.dirname(''))
 
 export const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    console.log({ file })
+  destination: (_req, _file, cb) => {
     const destination = path.join(__dirname, 'storage')
 
     cb(null, destination)

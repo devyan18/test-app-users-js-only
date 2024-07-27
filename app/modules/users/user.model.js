@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose'
-import { compareHash, hashStr } from '../../utils/encrypt.js'
+import { compareHash, hashStr } from '../../../utils/encrypt.js'
 
 const userSchema = new Schema({
   username: {
@@ -20,7 +20,15 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  workspaces: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Workspace'
+  }],
+  invitations: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Workspace'
+  }]
 }, {
   timestamps: true,
   versionKey: false

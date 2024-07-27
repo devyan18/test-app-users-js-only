@@ -1,6 +1,7 @@
+import 'dotenv/config'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { app } from './app.js'
+import { app } from './app/app.js'
 import { __dirname, envs } from './utils/constants.js'
 import { connectToDB } from './db/connect.js'
 
